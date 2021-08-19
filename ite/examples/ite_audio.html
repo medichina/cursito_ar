@@ -1,6 +1,12 @@
+   <!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Tracking Example</title>
+
     <script src='./lib/aframe-master.min.js'></script>
     <script src='./lib/aframe-ar-nft.js'></script>
-
 <script>
     window.onload = function() {
         AFRAME.registerComponent('videohandler', {
@@ -22,8 +28,8 @@
     };
 </script>
 
-<style>
-    .arjs-loader {
+    <style>
+      .arjs-loader {
         height: 100%;
         width: 100%;
         position: absolute;
@@ -34,24 +40,31 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
+      }
 
-    .arjs-loader div {
+      .arjs-loader div {
         text-align: center;
         font-size: 1.25em;
         color: white;
-    }
-</style>
+      }
+    </style>
+  </head>
 
-<body style='margin : 0px; overflow: hidden;'>
+  <body style="margin: 0px; overflow: hidden;">
+    <!-- minimal loader shown until image descriptors are loaded -->
     <div class="arjs-loader">
-        <div>Loading, please wait...</div>
+      <div>Loading, please wait...</div>
     </div>
     <a-scene
-        vr-mode-ui="enabled: false;"
-        renderer='antialias: true; alpha: true; precision: mediump;'
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
-
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <!-- we use cors proxy to avoid cross-origin problems 
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+      url="https://renecruz.github.io/ar/nft/ctlife"
+      -->
         <a-assets>
             <audio src="bunchie.mp3"
                 preload="auto" id="mp3" response-type="arraybuffer" loop
